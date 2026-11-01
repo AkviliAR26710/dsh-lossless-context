@@ -235,7 +235,7 @@ node tools/lcm-inspect.mjs --show "某个关键词"     # 绕过 FTS 直接搜�
 node tools/lcm-inspect.mjs --sql "select ..."     # 只读 SQL
 ```
 
-完整的运维手册（诊断树、升级清单、参数公式、自己写插件的实现思路）见 [docs/维护手册.md](docs/维护手册.md)。
+完整的运维手册（诊断树、升级清单、参数公式、自己写插件的实现思路）见 [docs/给C开发者的维护指南.md](docs/给C开发者的维护指南.md)。
 
 ---
 
@@ -266,6 +266,7 @@ dsh-lossless-context/
 │   ├── dsh-backup-idle.ps1       # 空闲感知调度器
 │   ├── dsh-pwsh-hook.ps1         # AI 回合忙锁（可选）
 │   ├── clean-agents.ps1          # 清除记忆文件里的 base64 图片垃圾
+│   ├── doctor.ps1                # 一键自检（DSH 更新后 / 出问题时定位坏在哪一环）
 │   ├── auto-snapshot.ps1         # 自动存档调度器（静默）
 │   ├── install-snapshot-task.ps1 # 注册「自动存档」计划任务
 │   └── install-tasks.ps1         # 注册静默计划任务（wscript + VBS 包装）
@@ -280,7 +281,7 @@ dsh-lossless-context/
 │   └── AGENTS.md.example         # 工作区记忆模板（含强制检索规则）
 ├── docs/
 │   ├── 深入原理.md                # 摘要为什么有损、归档为什么无损、缓存为什么省钱
-│   └── 维护手册.md                # 运维检查、诊断树、参数调优、自己写插件的实现思路
+│   └── 给C开发者的维护指南.md      # 运维检查、诊断树、参数调优、自己写插件的实现思路
 └── README.md
 ```
 
