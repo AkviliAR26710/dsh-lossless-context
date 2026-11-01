@@ -3,6 +3,10 @@
 > 给 [DeepSeek Harness](https://deepseek-harness.github.io/deepseek-harness/) 的无损上下文方案：
 > **压缩只腾窗口，细节留在本地硬盘里，需要时能逐字找回。**
 
+**In English** — Lossless context management for DeepSeek Harness (a DSH plugin / config pack). Every message is archived verbatim into local SQLite with FTS5; compaction only shrinks what is sent to the model, while `lcm_grep` / `lcm_expand` pull the original text back word for word.
+
+<sub>Keywords: DeepSeek Harness, DSH plugin, context compaction, context window management, lossless memory, long conversation, token cost, SQLite FTS5, retrieval, LCM.</sub>
+
 长会话的两个死结，这套配置各自对付一个：
 
 | 死结 | 怎么解 |
@@ -45,6 +49,13 @@
 
 - DeepSeek Harness（桌面版或 CLI 均可）
 - DeepSeek 官方 API key（本方案只针对 `deepseek-official`）
+
+### 0. 拿到仓库
+
+```bash
+git clone https://github.com/AkviliAR26710/dsh-lossless-context.git
+cd dsh-lossless-context
+```
 
 ### 1. 装归档插件
 
