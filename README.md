@@ -314,6 +314,6 @@ Remove-Item -Recurse "$env:USERPROFILE\.dsh\storages\dsh-plugin-lcm"
 
 ## 许可
 
-MIT。见 [LICENSE](LICENSE)。
+MIT。见 [LICENSE](LICENSE)；第三方声明见 [NOTICE](NOTICE)。
 
 本项目是**配置与工具层**，不分发任何第三方源码。`openseek-lcm` 是独立项目（MIT），DeepSeek Harness 及其组件版权归 DeepSeek, Inc.。本项目与二者均无隶属关系，也未获其背书。
