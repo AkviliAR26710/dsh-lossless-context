@@ -1,0 +1,87 @@
+{
+  "_readme": "改这个文件就够了，然后双击 bootstrap.cmd（或跑 bootstrap.ps1）。所有参数都在这里，不用碰任何 JS。",
+
+  "_version": 1,
+  "profile": "desktop",
+  "_profile_help": "desktop = 桌面版；如果你用命令行版，可能是 web / tui",
+
+  "archive": {
+    "_help": "归档层：把每一条消息逐字存进本地 SQLite，压缩不碰它",
+    "enabled": true,
+    "includeToolResults": true,
+    "maxTextCharsPerMessage": 60000,
+    "scopeDefaults": {
+      "_help": "默认检索范围。session=只查当前会话；worktree=同一工作目录的所有会话；root=顺父链查整棵树。设成 worktree，跨会话能直接查到，不用每次手动改",
+      "grep": "worktree",
+      "describe": "worktree"
+    },
+    "freshTailMessages": 10,
+    "summary": {
+      "minMessagesForTransform": 16,
+      "levelSize": 6,
+      "summaryCharBudget": 1500
+    },
+    "systemHint": true,
+    "tools": [
+      "lcm_status",
+      "lcm_resume",
+      "lcm_grep",
+      "lcm_expand",
+      "lcm_artifact"
+    ],
+    "_tools_help": "只暴露这几个工具，省每轮 schema token；清空数组 = 全部 18 个",
+    "allowScopeAll": false,
+    "retention": {
+      "deletedSessionDays": 365,
+      "orphanBlobDays": 30
+    }
+  },
+
+  "compaction": {
+    "_help": "压缩层：到水位才把旧历史折成摘要。thresholdRatio 调高=省token但易撞窗口；retainRatio 调高=更记得刚才但每轮更贵",
+    "thresholdRatio": 0.6,
+    "headroomTokens": 24576,
+    "retainRatio": 0.35,
+    "summarizationModel": "deepseek-flash",
+    "maxTokens": 16384,
+    "compactionRetries": 1,
+    "maxOverflowRetries": 1
+  },
+
+  "pruner": {
+    "_help": "工具输出修剪：超过 thresholdChars 的文本会被截成 头+尾，中段丢弃",
+    "thresholdChars": 32000,
+    "headChars": 24000,
+    "tailChars": 8000
+  },
+
+  "roleplay": {
+    "_help": "角色扮演模式：用 dsh-persona 的 complete:true 把系统提示整个替换掉，去掉助手人格",
+    "enabled": true,
+    "presetId": "roleplay",
+    "presetName": "角色扮演（纯叙事）",
+    "personaFile": "templates/persona-roleplay.txt",
+    "_personaFile_help": "完整系统提示，想改人设就改这个 txt",
+    "fallbackSuffixFile": "templates/persona-suffix.txt",
+    "_fallbackSuffix_help": "如果当前 DSH 没有 dsh-persona / dsh-agent-preset，就降级用这个注入到 system-prompt.personaSuffix"
+  },
+
+  "companion": {
+    "_help": "陪伴聊天模式：第一人称对话，不是叙事。给深夜聊天用",
+    "enabled": true,
+    "presetId": "companion",
+    "presetName": "陪伴聊天",
+    "presetDesc": "只有人设与记忆，没有编码工具",
+    "order": 1,
+    "personaFile": "templates/persona-companion.txt"
+  },
+  "tasks": {
+    "_help": "计划任务：自动存档 + 归档快照 + 全量备份",
+    "snapshotIntervalMinutes": 10,
+    "snapshotMinNewMessages": 4,
+    "snapshotKeep": 6,
+    "backupDailyTime": "00:00",
+    "backupRetryHours": 2,
+    "backupKeepDays": 14
+  }
+}

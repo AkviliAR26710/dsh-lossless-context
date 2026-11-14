@@ -1,0 +1,12 @@
+# Third-party notice
+
+This project is a *configuration + tooling* layer. It does not vendor any
+third-party source code. It installs, configures and wraps:
+
+  - openseek-lcm            MIT   https://github.com/Pub-Polaris/openseek-lcm
+  - @deepseek-ai/dsh-*      shipped with DeepSeek Harness (see the app's own
+                            LICENSES; not redistributed here)
+
+DeepSeek Harness and DeepSeek are trademarks of DeepSeek, Inc. This project is
+an independent community work and is not affiliated with or endorsed by
+DeepSeek, Inc. or the openseek-lcm author.
